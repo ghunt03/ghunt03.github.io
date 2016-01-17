@@ -189,7 +189,7 @@ In order to use these modules they needed to be imported into the notebook first
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[122]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#importing of required modules</span>
@@ -199,6 +199,7 @@ In order to use these modules they needed to be imported into the notebook first
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">ipy_table</span> <span class="kn">as</span> <span class="nn">tbl</span>
 <span class="kn">from</span> <span class="nn">numbers</span> <span class="kn">import</span> <span class="n">Number</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="c">#allow plots and visualisations to be displayed in the report</span>
 <span class="o">%</span><span class="k">pylab</span> inline
 </pre></div>
@@ -220,7 +221,7 @@ In order to use these modules they needed to be imported into the notebook first
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: pylab import has clobbered these variables: [&apos;f&apos;]
+<pre>WARNING: pylab import has clobbered these variables: [&apos;f&apos;, &apos;table&apos;]
 &#96;%matplotlib&#96; prevents importing * from pylab and numpy
 </pre>
 </div>
@@ -232,7 +233,7 @@ In order to use these modules they needed to be imported into the notebook first
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="prompt input_prompt">In&nbsp;[123]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">as_percent</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="s">&#39;0.2&#39;</span><span class="p">):</span>
@@ -266,7 +267,7 @@ In order to use these modules they needed to be imported into the notebook first
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[124]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Read csv into Pandas Dataframe and store in dataset variable</span>
@@ -290,7 +291,7 @@ In order to use these modules they needed to be imported into the notebook first
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="prompt input_prompt">In&nbsp;[125]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># print out information about the data</span>
@@ -345,10 +346,11 @@ memory usage: 90.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="prompt input_prompt">In&nbsp;[126]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># determine mean age based on Sex and Pclass</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">missing_ages</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+<span class="c"># determine mean age based on Sex and Pclass</span>
 <span class="n">mean_ages</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">&#39;Sex&#39;</span><span class="p">,</span><span class="s">&#39;Pclass&#39;</span><span class="p">])[</span><span class="s">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">remove_na_ages</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
@@ -381,7 +383,7 @@ memory usage: 90.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="prompt input_prompt">In&nbsp;[127]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">missing_ports</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Embarked&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
@@ -396,7 +398,7 @@ memory usage: 90.5+ KB
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[79]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[127]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -462,7 +464,7 @@ memory usage: 90.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="prompt input_prompt">In&nbsp;[128]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># search by ticket number and cabin</span>
@@ -477,7 +479,7 @@ memory usage: 90.5+ KB
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[80]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[128]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -523,7 +525,7 @@ memory usage: 90.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[129]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Embarked&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s">&#39;S&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -546,7 +548,7 @@ memory usage: 90.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[130]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># dropping columns Cabin, Name and Ticket</span>
@@ -604,7 +606,7 @@ memory usage: 69.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="prompt input_prompt">In&nbsp;[131]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">map_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -641,7 +643,7 @@ memory usage: 69.6+ KB
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[83]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[131]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -724,7 +726,7 @@ memory usage: 69.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="prompt input_prompt">In&nbsp;[132]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">age_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;0-9&#39;</span><span class="p">,</span> <span class="s">&#39;10-19&#39;</span><span class="p">,</span> <span class="s">&#39;20-29&#39;</span><span class="p">,</span> <span class="s">&#39;30-39&#39;</span><span class="p">,</span> <span class="s">&#39;40-49&#39;</span><span class="p">,</span> <span class="s">&#39;50-59&#39;</span><span class="p">,</span> <span class="s">&#39;60-69&#39;</span><span class="p">,</span> <span class="s">&#39;70-79&#39;</span><span class="p">]</span>
@@ -748,7 +750,7 @@ memory usage: 69.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="prompt input_prompt">In&nbsp;[133]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># passengers and number of survivors based on Kaggle results</span>
@@ -792,7 +794,7 @@ memory usage: 69.6+ KB
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[85]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[133]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <table border="1" cellpadding="3" cellspacing="0"  style="border:1px solid black;border-collapse:collapse;"><tr><td>Item</td><td>Kaggle&nbsp(Count)</td><td>Kaggle&nbsp(%)</td><td>Sample&nbspDataset&nbsp(Count)</td><td>Sample&nbspDataset&nbsp(%)</td></tr><tr><td>Total&nbspPassengers</td><td>2224</td><td>-</td><td>891</td><td>-</td></tr><tr><td>Survivors</td><td>722</td><td>32.46%</td><td>342</td><td>38.38%</td></tr><tr><td>Non-survivors</td><td>1502</td><td>67.54%</td><td>549</td><td>61.62%</td></tr></table>
@@ -820,6 +822,9 @@ memory usage: 69.6+ KB
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="5.2-Which-gender-had-a-better-chance-of-survival?">5.2 Which gender had a better chance of survival?<a class="anchor-link" href="#5.2-Which-gender-had-a-better-chance-of-survival?">&#182;</a></h2><p>In order to answer this question we need to look at how many males and females were on board and which gender had the highest survival rate.</p>
+<h3 id="Hypothesis">Hypothesis<a class="anchor-link" href="#Hypothesis">&#182;</a></h3><p>The hypothesis for this question is that the gender does impact the chances of survival</p>
+<p>H0 = Gender has no impact on survivability</p>
+<p>HA = Gender does impact the chances of survivabily</p>
 
 </div>
 </div>
@@ -835,11 +840,11 @@ memory usage: 69.6+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="prompt input_prompt">In&nbsp;[134]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">group_by_gender_survival</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">&#39;Sex&#39;</span><span class="p">,</span><span class="s">&#39;Survived&#39;</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">group_by_gender_survival</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Survived&#39;</span><span class="p">],</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Sex&#39;</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">table</span>
 </pre></div>
 
 </div>
@@ -852,12 +857,10 @@ memory usage: 69.6+ KB
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Sex     Survived
-female  False        81
-        True        233
-male    False       468
-        True        109
-dtype: int64
+<pre>Sex       female  male
+Survived              
+False         81   468
+True         233   109
 </pre>
 </div>
 </div>
@@ -877,7 +880,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="prompt input_prompt">In&nbsp;[135]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;Sex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -907,7 +910,7 @@ Name: Survived, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[136]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># calculate values for each survival status</span>
@@ -952,11 +955,11 @@ Name: Survived, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[88]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[136]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x10d61d890&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x10ef663d0&gt;</pre>
 </div>
 
 </div>
@@ -1237,17 +1240,75 @@ SIyUjImIiIjE6P8D+SJjHJ0Gn1YAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.3-Which-social-class-had-a-better-chance-of-survival?">5.3 Which social class had a better chance of survival?<a class="anchor-link" href="#5.3-Which-social-class-had-a-better-chance-of-survival?">&#182;</a></h2><h3 id="Count-of-survivors-by-class">Count of survivors by class<a class="anchor-link" href="#Count-of-survivors-by-class">&#182;</a></h3>
+<p>As the P-Value is less than 0.05 the probability of that the age group will impact the chances of survival is high. Therefore I believe that we can reject the null hypothesis.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="prompt input_prompt">In&nbsp;[137]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">group_by_class_survival</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">&#39;Pclass&#39;</span><span class="p">,</span><span class="s">&#39;Survived&#39;</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">group_by_class_survival</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Survived&#39;</span><span class="p">]],</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Sex&#39;</span><span class="p">])</span>
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">&#39;Item&#39;</span><span class="p">,</span><span class="s">&#39;Value&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">&#39;Chi-Square Test&#39;</span><span class="p">,</span><span class="n">chi2</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">&#39;P-Value&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">tbl</span><span class="o">.</span><span class="n">make_table</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[137]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table border="1" cellpadding="3" cellspacing="0"  style="border:1px solid black;border-collapse:collapse;"><tr><td>Item</td><td>Value</td></tr><tr><td>Chi-Square&nbspTest</td><td>260.7170</td></tr><tr><td>P-Value</td><td>0.0000</td></tr></table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As the P-Value is less than 0.05 the probability of that the gender will impact the chances of survival is high. Therefore I believe that we can reject the null hypothesis. I also believe that the plots above confirm this result.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.3-Which-social-class-had-a-better-chance-of-survival?">5.3 Which social class had a better chance of survival?<a class="anchor-link" href="#5.3-Which-social-class-had-a-better-chance-of-survival?">&#182;</a></h2><h3 id="Hypothesis">Hypothesis<a class="anchor-link" href="#Hypothesis">&#182;</a></h3><p>The hypothesis for this question is that the social class does impact the chances of survival</p>
+<p>H0 = Social Class has no impact on survivability</p>
+<p>HA = Social Class does impact the chances of survivabily</p>
+<h3 id="Count-of-survivors-by-class">Count of survivors by class<a class="anchor-link" href="#Count-of-survivors-by-class">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[138]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Survived&#39;</span><span class="p">],</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Pclass&#39;</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">table</span>
 </pre></div>
 
 </div>
@@ -1260,14 +1321,10 @@ SIyUjImIiIjE6P8D+SJjHJ0Gn1YAAAAASUVORK5CYII=
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Pclass        Survived
-Lower Class   False       372
-              True        119
-Middle Class  False        97
-              True         87
-Upper Class   False        80
-              True        136
-dtype: int64
+<pre>Pclass    Lower Class  Middle Class  Upper Class
+Survived                                        
+False             372            97           80
+True              119            87          136
 </pre>
 </div>
 </div>
@@ -1287,7 +1344,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[139]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;Pclass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1318,7 +1375,7 @@ Name: Survived, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="prompt input_prompt">In&nbsp;[140]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># calculate values for each survival status</span>
@@ -1365,11 +1422,11 @@ Name: Survived, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[91]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[140]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x10cfd9090&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x10ddf0110&gt;</pre>
 </div>
 
 </div>
@@ -1656,7 +1713,65 @@ ymHNUM+YiIiISETqGRMRERGJSMWYiIiISEQqxkREREQiUjEmIiIiEpGKMREREZGIVIyJiIiIRPT/
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.4-Which-age-group-had-a-better-chance-of-survival?">5.4 Which age group had a better chance of survival?<a class="anchor-link" href="#5.4-Which-age-group-had-a-better-chance-of-survival?">&#182;</a></h2>
+<h3 id="Hypothesis-Test">Hypothesis Test<a class="anchor-link" href="#Hypothesis-Test">&#182;</a></h3><p>For this test I will be using the chi-sqaure test for independence</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[141]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Survived&#39;</span><span class="p">]],</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Pclass&#39;</span><span class="p">])</span>
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">&#39;Item&#39;</span><span class="p">,</span><span class="s">&#39;Value&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">&#39;Chi-Square Test&#39;</span><span class="p">,</span><span class="n">chi2</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">&#39;P-Value&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">tbl</span><span class="o">.</span><span class="n">make_table</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[141]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table border="1" cellpadding="3" cellspacing="0"  style="border:1px solid black;border-collapse:collapse;"><tr><td>Item</td><td>Value</td></tr><tr><td>Chi-Square&nbspTest</td><td>102.8890</td></tr><tr><td>P-Value</td><td>0.0000</td></tr></table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As the P-Value is less than 0.05 the probability of that the social class will impact the chances of survival is high. Therefore I believe that we can reject the null hypothesis. I also believe that the plots above confirm this result.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.4-Which-age-group-had-a-better-chance-of-survival?">5.4 Which age group had a better chance of survival?<a class="anchor-link" href="#5.4-Which-age-group-had-a-better-chance-of-survival?">&#182;</a></h2><h3 id="Hypothesis">Hypothesis<a class="anchor-link" href="#Hypothesis">&#182;</a></h3><p>The hypothesis for this question is that the age group does impact the chances of survival</p>
+<p>H0 = Age Group has no impact on survivability</p>
+<p>HA = Age Group does impact the chances of survivabily</p>
+
 </div>
 </div>
 </div>
@@ -1671,7 +1786,7 @@ ymHNUM+YiIiISETqGRMRERGJSMWYiIiISEQqxkREREQiUjEmIiIiEpGKMREREZGIVIyJiIiIRPT/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="prompt input_prompt">In&nbsp;[142]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">&#39;age_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">&#39;bar&#39;</span><span class="p">,</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -1895,7 +2010,7 @@ gpmZZS4IZmYGuCCYmVnmgmBmZoALgpmZZS4IZmYGwP8H8wfYbw+DtL0AAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="prompt input_prompt">In&nbsp;[143]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">&#39;age_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1931,7 +2046,7 @@ Name: Survived, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="prompt input_prompt">In&nbsp;[144]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># calculate values for each survival status</span>
@@ -1978,11 +2093,11 @@ Name: Survived, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[94]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[144]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x10f121e90&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x10f376790&gt;</pre>
 </div>
 
 </div>
@@ -2319,7 +2434,7 @@ CCGEEEIP+QtmM+U5w8cWNQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[145]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">&#39;Sex&#39;</span><span class="p">,</span><span class="s">&#39;age_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -2362,7 +2477,7 @@ Name: Survived, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[146]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">male_data</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="n">titanic_df</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="s">&quot;male&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;age_group&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
@@ -2602,6 +2717,148 @@ SUBEJMOUBEREMkxJQEQkw/4/dfud72dgyOsAAAAASUVORK5CYII=
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Hypothesis-Test">Hypothesis Test<a class="anchor-link" href="#Hypothesis-Test">&#182;</a></h3><p>For this test I will be using the chi-sqaure test for independence</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[147]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Survived&#39;</span><span class="p">]],</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;age_group&#39;</span><span class="p">])</span>
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">&#39;Item&#39;</span><span class="p">,</span><span class="s">&#39;Value&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">&#39;Chi-Square Test&#39;</span><span class="p">,</span><span class="n">chi2</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">&#39;P-Value&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">tbl</span><span class="o">.</span><span class="n">make_table</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[147]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table border="1" cellpadding="3" cellspacing="0"  style="border:1px solid black;border-collapse:collapse;"><tr><td>Item</td><td>Value</td></tr><tr><td>Chi-Square&nbspTest</td><td>29.5389</td></tr><tr><td>P-Value</td><td>0.0001</td></tr></table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As the P-Value is less than 0.05 the probability of that the age group will impact the chances of survival is high. Therefore I believe that we can reject the null hypothesis.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="6.-Conclusion">6. Conclusion<a class="anchor-link" href="#6.-Conclusion">&#182;</a></h1><h3 id="6.1-Limitations-of-dataset">6.1 Limitations of dataset<a class="anchor-link" href="#6.1-Limitations-of-dataset">&#182;</a></h3><p>The are a number of limitations with the Titanic Dataset, which are caused by:</p>
+<ul>
+<li>missing data</li>
+<li>only been a sample of the data</li>
+</ul>
+<p>The missing data and size of the sample could skew the results for example the missing ages.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[148]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="n">missing_ages</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;Sex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sex
+female     53
+male      124
+dtype: int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above shows that there were 53 ages missing for females and 124 ages missing for males. I had a choice with how to handle the missing ages each with their pros and cons.</p>
+<ul>
+<li>delete the rows with the missing ages - this would limit the accuracy of the analysis of the gender and class, however the accuracy of the analysis of the Age factor would be more accurate</li>
+<li>generate ages based on the mean of ages - this could skew the results of the age analysis. In section 4.2, I choose this option, however I based the ages on the average for the Gender and Class.</li>
+</ul>
+<p>The size of the sample data could also impact the results as we don't know if this is a random sample or if the selection of the data is biased or unbiased.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.2-Other-variables">6.2 Other variables<a class="anchor-link" href="#6.2-Other-variables">&#182;</a></h2><p>As with most datasets the more information we have the better it can be analysed. I believe that we could add the following variables:</p>
+<ul>
+<li>passenger or crew - the current dataset doesn't distingush between passenger or crew, however from history we know that a mixture of both survived.</li>
+<li>life boat number - the reason why there were so many fatalities on board the Titanic was due to there not been enough lifeboats. I believe that if we knew the lifeboat number and the capacity of a lifeboat we could determine if it was possible for more people to survive</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
