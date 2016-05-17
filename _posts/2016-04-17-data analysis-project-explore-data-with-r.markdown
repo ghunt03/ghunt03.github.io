@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Data Analysis Project: Explore data with R"
+title:  "Exploring data with R: Financial Contributions to Presidental Candidates in New York"
 date:   2016-04-16 00:00:03 +1100
-categories: Data_Analysis_Projects
+categories: Data_Analysis
 ---
 This project involves selecting a dataset and through the use of R use techniques to explore, analyse and interpret the data. For this project I selected the Financial Contributions made to Presedential Candidates in New York.
 

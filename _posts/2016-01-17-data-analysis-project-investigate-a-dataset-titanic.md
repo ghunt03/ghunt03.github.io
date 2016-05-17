@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Data Analysis Project: Investigate a Dataset (Titanic)"
+title:  "Investigating a Dataset (Titanic)"
 date:   2016-01-17 00:00:03 +1100
-categories: Data_Analysis_Projects
+categories: Data_Analysis
 ---
 This project involves the use of NumPy, Pandas, MatPlotlib, Seaborn and Python to analyse a dataset. The dataset I choose was the Titanic Dataset provided by Kaggle.
 

@@ -1,0 +1,9 @@
+name: iOS Apps
+projects:
+  - name: Pitch Perfect
+    github: mojombo
+    description: testing
+
+  - name: MemeMe
+    github: parkr
+    description: description 2
