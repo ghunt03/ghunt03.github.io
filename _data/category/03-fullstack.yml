@@ -1,0 +1,22 @@
+name: Full Stack Development
+projects:
+  - name: Movie Trailer Site
+    github: P1---Movie-Trailer-Site
+    description: This project is a Python based, which allows a list of Media objects (Movies and TV Series) to be passed into a HTML page generator. The HTML page (entertainment_center.html) generated shows information about a selection of Movies and TV Series.
+    link: null
+    tech: [Python]
+  - name: Swiss Tournament System
+    github: P2---Swiss-Tournament
+    description: This project is a tournament system based on the Swiss Pairing method. The Swiss Pairing method pairs players in each round that are equally (same number of wins) or nearly equal (closest number of wins) to each other.
+    link: null
+    tech: [Python, PostgreSQL]
+  - name: Item Catalog
+    github: P3---Item-Catalog
+    description: This project is a web based application which can be used to store information about construction projects. The application allows users to create, edit and browse construction projects based on the assigned category.
+    link: null
+    tech: [Python, PostgreSQL, SQLlite, Flask, Bootstrap, Google Authentication, Facebook Authentication]
+  - name: Conference Central - Google App Engine
+    github: P4---Conference-Central
+    description: This project is utilising the Google App Engine and Datastore to develop a backend API for a conference management system. The main focus of this project is the API, which allows the creation of Conferences, Sessions and Speakers and allows authenticated users to register for a conference and add sessions to their wish list
+    link: https://striking-center-104307.appspot.com/
+    tech: [Python, Google App Engine, API]

@@ -1,0 +1,17 @@
+name: iOS Apps
+projects:
+  - name: Pitch Perfect App
+    github: IOSND01---Pitch-Perfect
+    description: This project was built as part of the Udacity iOS Nanodegree and was my first attempt at writing an iOS app. This specifications for this project was to develop a iPhone app, which can record audio and playback the audio after applying different filters.
+    link: null
+    tech: [iOS, Swift]
+  - name: MemeMe
+    github: IOSND02---MemeMe
+    description: This project was built as part of the Udacity iOS Nanodegree. The specifications for this project was to build an iPhone app which can take an image from the camera and album and add text to the top and bottom of the image. Once the image was selected and the text added it can be shared or saved. After the meme has been saved it can be viewed in the Sent Meme's table or collection view.
+    link: null
+    tech: [iOS, Swift]
+  - name: On the Map
+    github: IOSND03-On-the-Map
+    description: This project uses the Udacity API and Facebook to authenticate users, then allows logged in users to check-in, along with a link. The check in locations for students are displayed on a map or in a table view.
+    link: null
+    tech: [iOS, Swift, Facebook SDK, Parse, API]

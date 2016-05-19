@@ -3,32 +3,55 @@ layout: default
 title: Projects
 permalink: /projects/
 ---
-
+<h1>Projects</h1>
 {% for org_hash in site.data.category %}
 {% assign org = org_hash[1] %}
-<h2>{{ org.name }} - ({{ org.projects | size }} projects)</h2>
 
 
 
-<table class="table table-condensed">
-	<thead>
-		<tr>
-			<th>
-				Project
-			</th>
-			<th>
-				Description
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-  	{% for project in org.projects %}
-    	<tr>
-    		<td>
-    	{{ project.name}}
-    </td>
-    </tr>
-    {% endfor %}
-	</tbody>
-</table>  
+
+<h2>{{ org.name }}</h2>
+
+<div class="row">
+
+{% for project in org.projects %}
+<div class="col-md-6">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ project.name}}</h3>
+  </div>
+  <div class="panel-body">
+    {{project.description}} <br/>
+
+<div class="row">
+	 <div class="col-md-6">
+	 	<span class="label label-primary">Tech:</span> 
+		{% for t in project.tech %}
+			<span class="label label-info">{{t}}</span>
+		{% endfor %}
+	 </div>
+	 <div class="col-md-3">
+	 	{% if project.link != null %}
+			<a href="{{ project.link | prepend: site.baseurl }}" target="_blank"><i class="fa fa-folder-open"></i> Open Project</a>
+			{% endif %}
+	 </div>
+	 <div class="col-md-3">
+		{% if project.github != null %}
+		<a href="https://github.com/ghunt03/{{ project.github }}" target="_blank">
+		<i class="fa fa-github"></i> Github Repo</a>
+		{% endif %}
+	 </div>
+</div>
+  </div>
+</div>
+</div>
+{% endfor %}
+	
+
+	
+</div>
+
+
+
+
 {% endfor %}
