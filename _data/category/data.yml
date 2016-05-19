@@ -1,6 +1,6 @@
 name: Data Analysis
 projects:
-  - name: Exploring Data with R  Financial Contributions to Presidential Campaigns 2016
+  - name: Exploring Data with R - Financial Contributions to Presidential Campaigns 2016
     github: DAP04-Data-Analysis-with-R
     description: This project involves selecting a dataset and through the use of R use techniques to explore, analyse and interpret the data. For this project I selected the Financial Contributions made to Presedential Candidates in New York.
     link: /DAProjects/DAP04/FinancialContributions.html
