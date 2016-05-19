@@ -15,3 +15,8 @@ projects:
     description: This project is a web based application which can be used to store information about construction projects. The application allows users to create, edit and browse construction projects based on the assigned category.
     link: null
     tech: [Python, PostgreSQL, SQLlite, Flask, Bootstrap, Google Authentication, Facebook Authentication]
+  - name: Conference Central
+    github: P4---Conference-Central
+    description: This project is utilising the Google App Engine and Datastore to develop a backend API for a conference management system. The main focus of this project is the API, which allows the creation of Conferences, Sessions and Speakers and allows authenticated users to register for a conference and add sessions to their wish list
+    link: https://striking-center-104307.appspot.com/
+    tech: [Python, Google App Engine, API]
