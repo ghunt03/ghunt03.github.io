@@ -1,17 +1,18 @@
-name: Full Stack Development
+name: Data Analysis
 projects:
-  - name: Movie Trailer Site
-    github: P1---Movie-Trailer-Site
-    description: This project is a Python based, which allows a list of Media objects (Movies and TV Series) to be passed into a HTML page generator. The HTML page (entertainment_center.html) generated shows information about a selection of Movies and TV Series.
-    link: null
-    tech: [Python]
-  - name: Swiss Tournament System
-    github: P2---Swiss-Tournament
-    description: This project is a tournament system based on the Swiss Pairing method. The Swiss Pairing method pairs players in each round that are equally (same number of wins) or nearly equal (closest number of wins) to each other.
-    link: null
-    tech: [Python, PostgreSQL]
-  - name: Item Catalog
-    github: P3---Item-Catalog
-    description: This project is a web based application which can be used to store information about construction projects. The application allows users to create, edit and browse construction projects based on the assigned category.
-    link: null
-    tech: [Python, PostgreSQL, SQLlite, Flask, Bootstrap, Google Authentication, Facebook Authentication]
+  - name: Exploring Data with R  Financial Contributions to Presidential Campaigns 2016
+    github: DAP04-Data-Analysis-with-R
+    description: This project involves selecting a dataset and through the use of R use techniques to explore, analyse and interpret the data. For this project I selected the Financial Contributions made to Presedential Candidates in New York.
+    link: /DAProjects/DAP04/FinancialContributions.html
+    tech: [R, ggPlot, Markdown, Python]
+  - name: Wrangling Open Street Map Data
+    github: DAP03-Data-Wrangling---MongoDB
+    description: This project involved extracting data from OpenStreetMaps and then through auditing the data, determine any data that needed to be cleaned. Once the data was cleaned it could then be converted to JSON and imported into MongoDB for analysis. The project consisted of 1.1 million records from the selected area and approximately 970,000 had to be cleaned before the data could be analysed.
+    link: /DAProjects/DAP03/DataAnalysisProject3WrangleOpenStreetMapData.html
+    tech: [MongoDB, Python, XML, JSON, Geocoding]
+
+  - name: Investigating a Dataset (Titanic)
+    github: DAP02-Investigate-a-dataset
+    description: This project involves the use of NumPy, Pandas, MatPlotlib, Seaborn and Python to analyse a dataset. The dataset I choose was the Titanic Dataset provided by Kaggle.
+    link: /DAProjects/DAP02/TitanicDatasetInvestigation.html
+    tech: [Python, NumPy, Pandas, MatPlotlib, Seaborn]
