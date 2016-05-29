@@ -1,0 +1,449 @@
+	<html>
+	<head>
+		<title>DAP05 - Identify Fraud from Enron Email</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-OiWEn8WwtH+084y4yW2YhhH6z/qTSecHZuk/eiWtnvLtU+Z8lpDsmhOKkex6YARr" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<style>
+			.code {
+				margin-left: 20px;
+				margin-bottom: 20px;
+				background-color: #D5D8DC;
+			}
+		</style>
+	</head>
+	<body>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Machine Learning: Identify Fraud from Enron Email</a>
+				</div>
+
+			</div>
+		</nav>
+
+		<div class="container">
+
+		<h1>Overview</h1>
+		
+		<p>
+			The purpose / goal for this project is to use the financial and email data available to us from the Enron Fraud case and determine who are the people of interest and who warrants further investigation. Whilst the data is historic and the people have been already identifed publicly, this project is using Machine Learning to identify these people through the use of data.
+		</p>
+		<p>In 2000, Enron was one of the largest companies in the United States. By 2002, it had collapsed into bankruptcy due to widespread corporate fraud. In the resulting Federal investigation, a significant amount of typically confidential information entered into the public record, including tens of thousands of emails and detailed financial data for top executives.</p>
+		<a href="https://github.com/ghunt03/DAP05-Identify-Fraud-from-Enron-Email" target="_blank">
+		<i class="fa fa-github"></i> Source Code for Project</a>
+		<h1>Data Analysis</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th align="right">Result</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						Number of people
+					</td>	
+					<td align="right">
+						146
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Number of People of Interest
+					</td>	
+					<td align="right">
+						18
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Number of Features / Variables
+					</td>
+					<td align="right">
+						21
+					</td>
+				</tr>
+			</tbody>	
+		</table>
+
+		<h3>Cleanliness / Completness of data</h3>
+		<p>The table below shows that the financial / payment data is missing for about 14.38% of people in the dataset, however there is 0% missing for the people of interest.</p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Result</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						Percentage of people with no payment data
+					</td>	
+					<td align="right">
+						14.4%
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Percentage of POI with no payment data
+					</td>	
+					<td align="right">
+						0.0%
+					</td>
+				</tr>
+			</tbody>	
+		</table>
+		<h2>Outliers</h2>
+		<p>During the initial analysis of the data and by plotting features such as Salaries vs Bonuses, I was able to identify that there was one significant outlier. This outlier was caused by the total row been added to the dataset. </p>
+		<div class="row">
+			<div class="col-md-6">
+				<img src="assets/figure_1.png" width="80%">
+				<div class="caption">
+					<span class="label label-default ">Figure 1: Plot of salaries and bonuses before outliers removed</span>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<img src="assets/figure_2.png" width="80%">
+				<div class="caption">
+					<span class="label label-default ">Figure 2: Plot of salaries and bonuses after outliers removed</span>
+				</div>
+			</div>
+		</div>
+		<br />
+		<p>Other options for removing outliers would be to remove 10% of the plots that have the highest error or difference to the linear regression model, however in this instance I will not be doing this as the remaining outliers in the data represent the top positions from Enron and would warrant further investigation.</p>
+
+
+
+
+		<h1>Features</h1>
+		<p>The original dataset contains the following features: </p>
+		<ul>
+			<li>poi (flag for identifying Person of Interest 0 or 1)</li>
+			<li>Financial:
+				<ul>
+					<li>salary</li>
+					<li>deferral_payments</li>
+					<li>total_payments</li>
+					<li>exercised_stock_options</li>
+					<li>bonus</li>
+					<li>restricted_stock</li>
+					<li>restricted_stock_deferred</li>
+					<li>total_stock_value</li>
+					<li>expenses</li>
+					<li>loan_advances</li>
+					<li>other</li>
+					<li>director_fees</li>
+					<li>deferred_income</li>
+					<li>long_term_incentive</li>
+				</ul>
+			</li>
+			<li>Messages: 
+				<ul>
+					<li>to_messages</li>
+					<li>shared_receipt_with_poi</li>
+					<li>from_messages</li>
+					<li>from_this_person_to_poi</li>
+					<li>email_address</li>
+ 					<li>from_poi_to_this_person</li>
+				</ul>
+			</li>
+		</ul>
+	<h2>Feature Creation</h2>
+	<p>After exploring the above features I decided to create the following addtional features, to see if they made a difference to the results of the algorithm:</p>
+	<ul>
+		<li><b>total_messages:</b> to_messages + from_messages</li>
+		<li><b>total_messages_with_poi:</b> from_this_person_to_poi + from_poi_to_this_person + shared_receipt_with_poi</li>
+		<li><b>message_shared_fraction:</b> total_messages_with_poi / total_messages</li>
+		<li><b>excerised_stock_ratio:</b> exercised_stock_options / total_stock_value</li>
+		<li><b>loan_ratio:</b> loan_advances / total_payments</li>
+	</ul>
+	<h2>Feature Selection</h2>
+ 	<p>Once these features were created I then had to decide on which features were important to training the machine learning algorithm. At this stage I was still undecided on which algorithm I would be using and I believe that the importance of the features would be different depending on the algorithm. </p>
+ 	<h3>DecisionTreeClassifier - Feature Importance</h3>
+ 	<p>In order to select the best features I ran a DecisionTreeClassifier over the training data and extracted the top ranked features. The top 10 features and scores are showng in the table below:</p>
+ 	<table class="table">
+ 		<thead>
+ 			<tr>
+ 				<th>
+ 					Feature
+ 				</th>
+ 				<th>
+ 					Score
+ 				</th>
+ 			</tr>
+ 		</thead>
+ 		<tbody>
+ 			<tr>
+ 				<td>
+					exercised_stock_options
+ 				</td>
+ 				<td>
+ 					0.26323
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+ 					other
+ 				</td>
+ 				<td>
+ 					0.19605
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					expenses
+ 				</td>
+ 				<td>
+ 					0.14502
+ 				</td>
+ 			</tr>
+			<tr>
+ 				<td>
+					total_payments
+ 				</td>
+ 				<td>
+ 					0.11180
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					long_term_incentive
+ 				</td>
+ 				<td>
+ 					0.10714
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					deferred_income
+ 				</td>
+ 				<td>
+ 					0.10627
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					excerised_stock_ratio
+ 				</td>
+ 				<td>
+ 					0.05357
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					bonus
+ 				</td>
+ 				<td>
+ 					0.01690
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					to_messages
+ 				</td>
+ 				<td>
+ 					0.0
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					deferral_payments
+ 				</td>
+ 				<td>
+ 					0.0
+ 				</td>
+ 			</tr>
+ 		</tbody>
+ 	</table>
+ 	<h3>SelectKBest - Feature Selection</h3>
+ 	<p>I also used SelectKBest to choose the top 10 features for other algorithms (GaussianNB and KNeighborsClassifier). The SelectKBest produced a different list of features, which incorporated some more of the features about emails. The results are shown below:</p>
+ 	<table class="table">
+	 	<thead>
+ 			<tr>
+ 				<th>
+ 					Feature
+ 				</th>
+ 				<th>
+ 					Score
+ 				</th>
+ 			</tr>
+ 		</thead>
+ 		<tbody>
+ 			<tr>
+ 				<td>
+					total_stock_value
+ 				</td>
+ 				<td>
+ 					14.6913
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					exercised_stock_options
+ 				</td>
+ 				<td>
+ 					13.7140
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					salary
+ 				</td>
+ 				<td>
+ 					11.1962
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					bonus
+ 				</td>
+ 				<td>
+ 					11.129
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					message_shared_fraction
+ 				</td>
+ 				<td>
+ 					6.8738
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					restricted_stock
+ 				</td>
+ 				<td>
+ 					6.5769
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					expenses
+ 				</td>
+ 				<td>
+ 					 5.9062
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					total_messages_with_poi
+ 				</td>
+ 				<td>
+ 					5.6090
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					shared_receipt_with_poi
+ 				</td>
+ 				<td>
+ 					5.4953
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td>
+					deferred_income
+ 				</td>
+ 				<td>
+ 					5.3040
+ 				</td>
+ 			</tr>
+ 		</tbody>
+	</table>
+
+
+
+		<h1>Algorithm</h1>
+		<p>For this project I tested GaussianNB (NaiveBayes), DecisionTreeClassifier, and KNeighborsClassifier, with both lists of features produced by the Feature Selection processes mentioned above. During the testing of the algorithms, I found that prior to any tuning of the algorithms the GaussianNB algorithm performed best, with the highest accuracy, precision_score and recall_score. However the False Positives were still high (1145)</p>
+		<p>Since there are tuning options available for GaussianNB, I decided to tune the DecisionTreeClassifier and KNeighborsClassifier, which produced better results. In the end I decided to use the tuned version of the KNeighborsClassifier</p>
+
+		<h1>Tuning the Algorithm</h1>
+		<p>Tuning the algorithm means to adjust the input parameters of the algorithm to ensure the best performance for the dataset and selected features. If a algorithm is not tuned correctly there is a potential that the incorrect results are presented and the best performance may not be achieved. However the effectiveness of the tuning will also depend on the algorithm chosen and the features selected. </p>
+		<p>As I had decided to use the KNeighborsClassifier algorithm I was able to tune the algorithm to improve the performance and achieve better results. For example prior to tuning the KNeighborsClassifier I was getting the following results:</p>
+		<div class="code">
+			Accuracy: 0.88407	Precision: 0.66709	Recall: 0.26050
+		</div>
+		<p>However after tuning the algorith I was able to get the following results:</p>
+		<div class="code">
+			Accuracy: 0.90013	Precision: 0.84384	Recall: 0.30800
+		</div>
+		<p>In order to determine the best input parameters for the KNeighborsClassifier, I used a grid search which allowed me to provide a range of parameters, which provided 1280 different models to test and return the parameters with best score, based on the scoring metric selected, in this case I used "precision". The best parameters that were returned were: <div class="code">n_neighbors=5, weights='uniform', leaf_size=1, algorithm= 'auto', p= 1</div>
+		</p>
+		<p>I also applied a similar approach to tuning the DecisionTreeClassifier to see how the results would differ. The GaussianNB algorithm does not have any input parameters and therefore cannot be tuned.</p>
+		
+		<h1>Validation</h1>
+		<p>Validation is how we go about testing our algorithm. Validating the algorithm is a process in which we use training data and then compare the results to test data. The benefits of splitting the data into training and test sets, allows us to make sure that we are not overfitting the data  and provides a mechanism for testing the algorithm to determine if we are getting the desired results. When splitting the data into the training and test sets there is the risk that the results could be skewed, if the split isn't selected randomly. For example if the dataset for Enron was sorted by the POI identifier and split in half, the training data would contain features for people who are not a POI, which would mean that when testing the algorithm the results may be unexpected and different to the training results.</p>
+		<p>In this project I used StratifiedShuffle to split the data into 2 sets: training data and test data. Other options would be to use either K-Fold or Cross_Validation.Train_Test_split. The reason I chose the StratifiedShuffle was because it was the same as the splitter that was used in the tester.py script and I believe that it provides a more random result, based on the parameters.</p>
+		
+		
+
+		<h1>Evaluation Metrics</h1>
+		<p>sklearn provides a number of built-in evaluation metrics including:</p>
+		<p>
+			<b>Accuracy</b> <br/>
+			<div class="code">
+				Accuracy = no of items in a class labeled correctly / all items in that class
+			</div>
+			The accuracy score is not as relevant for this particular dataset because the majority of the data is for people who are non-POI's.
+		</p>
+		<p>
+			<b>Recall</b>
+			<div class="code">
+				Recall = True Positives / (True Positives + False Negatives)
+			</div>
+			In the case of this dataset a True Positive is a POI who is identified correctly as a POI and a False Negative is a POI who was not idenitifed correctly. For this project I was able to produce a recall score of 0.308, which means that only 31% of POI's were identified correctly.
+		</p>
+		<p>
+			<b>Precision</b>
+			<div class="code">
+				Precision = True Positives / (True Positives + False Positives)
+			</div>
+			In the case of this dataset a True Positive is a POI who is correctly identified as a POI and a False Positive is a non-POI identified as a POI. In using the KNeighborsClassifier I was able to produce a precision score of 0.84 which shows that 84% of the people idenitified as a POI were actually POI's and 114 predicitons were incorrect.
+		</p>
+
+
+		
+		<p>
+			So that I could see how the different algorithms performed against the tester.py script I decided to use the test_classifier function, however normally I would use the metric calculations provided by the sklearn.metrics module. The results of the were as followed:</br>
+			<b>GaussianNB - using SelectKBest features</b><br/>
+				<pre>Accuracy: 0.83960	Precision: 0.39225	Recall: 0.36950	F1: 0.38054	F2: 0.37384
+Total predictions: 15000 True positives:  739	False positives: 1145	False negatives: 1261	True negatives: 11855</pre>
+		<b>DecisionTreeClassifier - using SelectKBest features</b><br/>
+	<pre>Accuracy: 0.80847	Precision: 0.24607	Recall: 0.21150	F1: 0.22748	F2: 0.21761
+Total predictions: 15000 True positives:  423	False positives: 1296	False negatives: 1577	True negatives: 11704
+	</pre>
+	<b><span style="color:green">KNeighborsClassifier - using SelectKBest features</span></b><br/>
+	<pre>Accuracy: 0.90013	Precision: 0.84384	Recall: 0.30800	F1: 0.45128	F2: 0.35281
+Total predictions: 15000 True positives:  616	False positives:  114	False negatives: 1384	True negatives: 12886
+	</pre>
+
+			<b>GaussianNB - using DecisionTree features</b><br/>
+				<pre>Accuracy: 0.84193	Precision: 0.37109	Recall: 0.26700	F1: 0.31056	F2: 0.28287
+Total predictions: 15000 True positives:  534	False positives:  905	False negatives: 1466	True negatives: 12095</pre>
+		<b>DecisionTreeClassifier - using DecisionTree features</b><br/>
+	<pre>Accuracy: 0.82440	Precision: 0.30212	Recall: 0.24200	F1: 0.26874	F2: 0.25203
+Total predictions: 15000 True positives:  484	False positives: 1118	False negatives: 1516	True negatives: 11882
+	</pre>
+	<b>KNeighborsClassifier - using DecisionTree features</b><br/>
+	<pre>Accuracy: 0.88767	Precision: 0.80000	Recall: 0.21000	F1: 0.33267	F2: 0.24633
+Total predictions: 15000 True positives:  420	False positives:  105	False negatives: 1580	True negatives: 12895
+	</pre>
+
+
+		</p>
+	</div><!-- /.container -->
+
+</body>
+</html>
