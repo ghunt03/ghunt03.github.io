@@ -104,19 +104,27 @@
 				</tr>
 			</tbody>	
 		</table>
+		
+				<img src="assets/figure_4.png" width="80%">
+				<div class="caption">
+					<span class="label label-default ">Figure 1: Plot showing the features in the dataset and how many records have incomplete data</span>
+				</div>
+		
+			
+		
 		<h2>Outliers</h2>
 		<p>During the initial analysis of the data and by plotting features such as Salaries vs Bonuses, I was able to identify that there was one significant outlier. This outlier was caused by the total row been added to the dataset. </p>
 		<div class="row">
 			<div class="col-md-6">
 				<img src="assets/figure_1.png" width="80%">
 				<div class="caption">
-					<span class="label label-default ">Figure 1: Plot of salaries and bonuses before outliers removed</span>
+					<span class="label label-default ">Figure 2: Plot of salaries and bonuses before outliers removed</span>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<img src="assets/figure_2.png" width="80%">
 				<div class="caption">
-					<span class="label label-default ">Figure 2: Plot of salaries and bonuses after outliers removed</span>
+					<span class="label label-default ">Figure 3: Plot of salaries and bonuses after outliers removed</span>
 				</div>
 			</div>
 		</div>
@@ -191,7 +199,7 @@
 		<div class="col-md-6">
 			<img src="assets/figure_3.png" width="80%">
 			<div class="caption">
-				<span class="label label-default ">Figure 3: Plot of evalaution scores based on the number of features</span>
+				<span class="label label-default ">Figure 4: Plot of evalaution scores based on the number of features</span>
 			</div>
 		</div>
 	</div>
@@ -393,7 +401,7 @@
 
 
 		<h1>Algorithm</h1>
-		<p>For this project I tested GaussianNB (NaiveBayes), DecisionTreeClassifier, and KNeighborsClassifier, with both lists of features produced by the Feature Selection processes mentioned above. During the testing of the algorithms, I found that prior to any tuning of the algorithms the GaussianNB algorithm performed best, with the highest accuracy, precision_score and recall_score. However the False Positives were still high (1145)</p>
+		<p>For this project I tested GaussianNB (NaiveBayes), DecisionTreeClassifier, and KNeighborsClassifier, with both lists of features produced by the Feature Selection processes mentioned above. During the testing of the algorithms, I found that prior to any tuning of the algorithms the GaussianNB algorithm performed best, with the highest accuracy (noting that due to the way the data is skewed the accuracy score is not the best measure to use here), precision_score and recall_score. However the False Positives were still high (1145)</p>
 		<p>Since there are tuning options available for GaussianNB, I decided to tune the DecisionTreeClassifier and KNeighborsClassifier, which produced better results. In the end I decided to use the tuned version of the KNeighborsClassifier</p>
 
 		<h1>Tuning the Algorithm</h1>
