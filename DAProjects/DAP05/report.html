@@ -161,15 +161,42 @@
 		</ul>
 	<h2>Feature Creation</h2>
 	<p>After exploring the above features I decided to create the following addtional features, to see if they made a difference to the results of the algorithm:</p>
-	<ul>
-		<li><b>total_messages:</b> to_messages + from_messages</li>
-		<li><b>total_messages_with_poi:</b> from_this_person_to_poi + from_poi_to_this_person + shared_receipt_with_poi</li>
-		<li><b>message_shared_fraction:</b> total_messages_with_poi / total_messages</li>
-		<li><b>excerised_stock_ratio:</b> exercised_stock_options / total_stock_value</li>
-		<li><b>loan_ratio:</b> loan_advances / total_payments</li>
-	</ul>
+	<p>Note: Prior to adding any new features the precision score was 0.77968 and the recall scrore was 0.31850</p>
+	<p>
+		<b>total_messages</b>: to_messages + from_messages </br>
+		This feature was created to see if the total number of emails sent and received increased for POI's. After creating this feature I was able to see that this featured made no impact on the precision and recall, as it did not rank in the top 10 features.
+	</p>
+	<p>
+		<b>total_messages_with_poi</b>: from_this_person_to_poi + from_poi_to_this_person + shared_receipt_with_poi </br>
+		After I seen that the previous feature made no impact I decided to see if the number of messages between POI's made an impact. Once this feature was added it was included in the top 10 features and the precision increased to 0.84384, however the recall score dropped slightly to 0.308
+	</p>
+	<p>
+		<b>message_shared_fraction</b>: total_messages_with_poi / total_messages</br>
+		Once I had seen that the previous feature increased the precision, I then wanted to see if there was a relationship between the total messages and the total messages with POI's.
+	</p>
+	<p>
+		<b>excerised_stock_ratio</b>:  exercised_stock_options / total_stock_value </br>
+		The next feature I created was based on the value of the excerised stock options vs the total value of the stock. This feature was useful for the DecisionTreeClassifier algorithm, but made no impact on the KNeighborsClassifier.
+	</p>
+
+
 	<h2>Feature Selection</h2>
  	<p>Once these features were created I then had to decide on which features were important to training the machine learning algorithm. At this stage I was still undecided on which algorithm I would be using and I believe that the importance of the features would be different depending on the algorithm. </p>
+ 	<h3>How many features?</h3>
+
+	<div class="row">
+		<div class="col-md-6">
+			<p>In order to select the best number of features to use, I loop through the number of features and performing the SelectKBest algorithm. The loop returned the Precision, Recall and F1 score for each number of features, from 1 - 24. I was then able to plot the results of the loop and visually see which number of features produced the best results. The plot showed that 10 and 11 features produced the best results.
+		</div>
+		<div class="col-md-6">
+			<img src="assets/figure_3.png" width="80%">
+			<div class="caption">
+				<span class="label label-default ">Figure 3: Plot of evalaution scores based on the number of features</span>
+			</div>
+		</div>
+	</div>
+	<h3>Scaling Features</h3>
+	<p>Since some of the feature values had such a large range of values, for example the Salary Feature ranged from $477 - $1,111,258, I decided to apply a MinMaxScaler. The MinMaxScaler adjusts the feature values and scales them so that any patterns can be identified easier.</p>
  	<h3>DecisionTreeClassifier - Feature Importance</h3>
  	<p>In order to select the best features I ran a DecisionTreeClassifier over the training data and extracted the top ranked features. The top 10 features and scores are showng in the table below:</p>
  	<table class="table">
