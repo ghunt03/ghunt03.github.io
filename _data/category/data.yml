@@ -1,4 +1,5 @@
-name: Data Analysis
+name: Data Analysis and Visualisation
+key: data
 projects:
   - name: Machine Learning - Identify Fraud from Enron Email
     github: DAP05-Identify-Fraud-from-Enron-Email
@@ -13,7 +14,7 @@ projects:
   - name: Wrangling Open Street Map Data
     github: DAP03-Data-Wrangling---MongoDB
     description: This project involved extracting data from OpenStreetMaps and then through auditing the data, determine any data that needed to be cleaned. Once the data was cleaned it could then be converted to JSON and imported into MongoDB for analysis. The project consisted of 1.1 million records from the selected area and approximately 970,000 had to be cleaned before the data could be analysed.
-    link: /DAProjects/DAP03/DataAnalysisProject3WrangleOpenStreetMapData.html
+    link: /DAProjects/DAP03/index.html
     tech: [MongoDB, Python, XML, JSON, Geocoding]
   - name: Investigating a Dataset (Titanic)
     github: DAP02-Investigate-a-dataset

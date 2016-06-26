@@ -1,4 +1,5 @@
 name: iOS Apps
+key: ios
 projects:
   - name: Pitch Perfect App
     github: IOSND01---Pitch-Perfect
@@ -15,3 +16,8 @@ projects:
     description: This project uses the Udacity API and Facebook to authenticate users, then allows logged in users to check-in, along with a link. The check in locations for students are displayed on a map or in a table view.
     link: null
     tech: [iOS, Swift, Facebook SDK, Parse, API]
+  - name: Virtual Tourist
+    github: IOSND04-Virtual-Tourist
+    description: This project is an iPhone app, that allows users to drop pins on a map and download / view photos from Flickr. The app downloads photos through the Flickr API and stores the data on the device through the use of Core Data. When viewing a location the user has the option to delete photos by clicking on them and choosing "Remove Selected Images" or clicking "New Collection", which will delete the photos and download a new set of photos.
+    link: null
+    tech: [iOS, Swift, Flickr, API, MapKit]

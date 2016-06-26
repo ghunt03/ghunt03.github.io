@@ -1,4 +1,5 @@
 name: Full Stack Development
+key: full
 projects:
   - name: Movie Trailer Site
     github: P1---Movie-Trailer-Site
