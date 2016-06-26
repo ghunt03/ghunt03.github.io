@@ -26,28 +26,23 @@
           <li><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
           {% endif %}
         {% endfor %}
-        {% if site.twitter_username %}
   <li>
     <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank  ">
       <i class="fa fa-twitter"></i> Twitter
     </a>
   </li>
-{% endif %}
-
-{% if site.github_username %}
   <li>
     <a href="https://github.com/{{ site.github_username }}" target="_blank">
       <i class="fa fa-github"></i> GitHub
     </a>
   </li>
-{% endif %}
-{% if site.linkedin %}
+
   <li>
     <a href="{{ site.linkedin }}" target="_blank">
       <i class="fa fa-linkedin"></i> LinkedIn
     </a>
   </li>
-{% endif %}
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
