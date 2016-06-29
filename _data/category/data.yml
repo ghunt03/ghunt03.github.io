@@ -5,7 +5,7 @@ projects:
     github: DAP06-Data-Visualisation-with-D3
     description: This project involves using D3.js to create an interactive visualisation
     link: /DAProjects/DAP06/index.html
-    tech: [Machine Learning, Python, sklearn]
+    tech: [D3, Javascript, JSON, Python]
   - name: Machine Learning - Identify Fraud from Enron Email
     github: DAP05-Identify-Fraud-from-Enron-Email
     description: This project involves using machine learning techniques to identify the People of Interest from the publicly available Enron Dataset.
