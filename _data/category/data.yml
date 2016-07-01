@@ -3,7 +3,7 @@ key: data
 projects:
   - name: Data Visualisation - Construction Work Completed
     github: DAP06-Data-Visualisation-with-D3
-    description: This project involves using D3.js  to create an interactive visualisation
+    description: This project involves using D3.js to create an interactive visualisation
     link: /DAProjects/DAP06/index.html
     tech: [D3, Javascript, JSON, Python]
   - name: Machine Learning - Identify Fraud from Enron Email
