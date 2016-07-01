@@ -40,7 +40,7 @@ function draw(data) {
 
     function formatValue(d) {
         var format = d3.format('0,000');
-            d = format(d / 1e6) + ' M';
+            d = format(d / 1e9) + ' B';
             return d;
     }
 
