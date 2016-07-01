@@ -1,6 +1,6 @@
 
 var margin = {top: 75, right: 20, bottom: 0, left: 100},
-        width = 500 - margin.left - margin.right,
+        width = 650 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 var transitionDuration = 500;
 
@@ -36,6 +36,12 @@ function draw(data) {
     function updateTitle(sector) {
         d3.select('h2')
         .text('Sector: '+ sector);
+    }
+
+    function formatValue(d) {
+        var format = d3.format('0,000');
+            d = format(d / 1e6) + ' M';
+            return d;
     }
 
     var sectors = d3.set();
@@ -77,9 +83,12 @@ function draw(data) {
       .range([height, 0])
       .domain(lineYRange);
 
+
+      
     var lineYAxis = d3.svg.axis()
       .scale(lineYScale)
-      .orient('left');
+      .orient('left')
+      .tickFormat(formatValue);
 
     var svgLine = d3.select('#chart1')
             .append('svg')
@@ -108,6 +117,13 @@ function draw(data) {
         .attr('class', 'y axis')
         .attr('transform', "translate(" + margin.left +", 0)")
         .call(lineYAxis);
+    svgLine.append("text")             // text label for the x axis
+        .attr("x", -100 )
+        .attr("y",  15)
+        .attr("class", "axis_title")
+        .style('text-anchor', 'end')
+        .attr("transform", "rotate(-90)")
+        .text("Value of work completed");
 
      
     var valueline = d3.svg.line()
@@ -151,7 +167,8 @@ function draw(data) {
     
     var yAxis = d3.svg.axis()
         .scale(yScale)
-        .orient("left");
+        .orient("left")
+        .tickFormat(formatValue);
 
     var svgBar = d3.select("#chart2")
         .append("svg")
@@ -180,7 +197,14 @@ function draw(data) {
       .attr("class", "y axis")
       .call(yAxis)
       .attr('transform', "translate(" + margin.left +", 0)");
-    
+       
+    svgBar.append("text")             // text label for the x axis
+        .attr("x", -100 )
+        .attr("y",  15)
+        .attr("class", "axis_title")
+        .style('text-anchor', 'end')
+        .attr("transform", "rotate(-90)")
+        .text("Value of work completed");
 
     svgBar.selectAll(".bar")
         .data(barData)
@@ -263,7 +287,7 @@ function draw(data) {
             return d.values['value'];
         });
         yScale.domain(yExtent);
-        
+
         svgBar.selectAll("rect")
             .data(barData)
             .transition()
