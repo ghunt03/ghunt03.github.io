@@ -1,0 +1,45 @@
+---
+layout: default
+title: Contact
+permalink: /contact/
+---
+
+<h1>Contact</h1>
+<p>
+	Send message to my <i class="fa fa-slack"></i> Slack channel
+</p>
+<div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+<div class="form-group">
+    <label for="exampleTextarea">Message</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+<button type="submit" class="btn btn-primary">Submit</button>
+<div class="alert alert-success" style="display:none;" role="alert">
+  Message sent successfully
+</div>
+  </div>
+
+
+<script type="text/javascript">
+	function postMessageToSlack(msgContent){
+	    var xmlhttp = new XMLHttpRequest(),
+	        webhook_url = 'https://hooks.slack.com/services/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',
+	        myJSONStr= msgContent;
+	    xmlhttp.open('POST', webhook_url, false);
+	    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	    xmlhttp.send(myJSONStr);
+	}
+
+	$(".btn").click(function() {
+		var email = $("input[id=exampleInputEmail1]").val()
+		var message = $("#exampleTextarea").val()
+		var msgContent = 'payload={"icon_emoji": ":ghost:", "username": "Service Bot","attachments":[{"fallback":"[Urgent] New Message From Website","pretext":"[Urgent] New Message From Website","color":"#D00000","fields":[{"title":"Email","value":"'+ email +'","short":false}, {"title":"Message","value":"'+ message +'","short":false}]}]}'
+		postMessageToSlack(msgContent)
+		$(".alert").show();
+		$(".btn").hide();
+	});
+</script>
