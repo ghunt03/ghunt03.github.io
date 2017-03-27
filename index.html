@@ -34,11 +34,15 @@ layout: default
       </div>
 
       <div class="row" id="contact">
-        <form method="POST" action="http://formspree.io/ghunt03@gmail.com">
-          <input type="email" name="email" placeholder="Your email">
-          <textarea name="message" placeholder="Your message"></textarea>
-          <button type="submit">Send</button>
-        </form>
+        <h2>Get in Touch</h2>
+        <div id="contact-form">
+            <form method="POST" action="https://formspree.io/ghunt03@gmail.com">
+                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="email" name="_replyto" placeholder="Your email" required>
+                <textarea name="message" placeholder="Your message" required></textarea>
+                <button type="submit" class="btn btn-default">Send</button>
+            </form>
+        </div>
       </div>
   </div>
   
