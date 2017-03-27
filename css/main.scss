@@ -12,6 +12,9 @@ $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
+$base-color: #2a7ae2;
+$base-color-hover: darken($base-color, 10%);
+
 $spacing-unit:     30px;
 
 $text-color:       #111;
@@ -47,6 +50,18 @@ $on-laptop:        800px;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "bootstrap", "bootstrap-social";
+
+#contact {
+    padding: 50px 15px;
+    background: $base-color;
+    text-align: center;
+
+    h2 {
+        margin: 0 0 15px 0;
+        color: #fff;
+        font-weight: 500;
+    }
+}
 
 #contact-form {
     max-width: 500px;
